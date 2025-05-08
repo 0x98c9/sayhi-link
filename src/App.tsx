@@ -3,6 +3,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import HomePage from './pages/HomePage';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
+import NotFound from './pages/NotFound';
 
 function App() {
   const router = createBrowserRouter(
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="*" element={<NotFound />} />
       </>
     ),
     {
