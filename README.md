@@ -6,7 +6,7 @@ A modern web application to easily generate WhatsApp direct chat links, with sup
 
 ## Features
 
-- **Phone Number Input**: Enter any phone number with country code selection.
+- **Phone Number Input**: Enter any phone number with country code selection. 
 - **Custom Message**: Add a pre-filled message to your WhatsApp link.
 - **Emoji Picker**: Insert emojis into your message with ease.
 - **QR Code Generation**: Instantly generate a QR code for your WhatsApp link.
