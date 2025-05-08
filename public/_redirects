@@ -1,0 +1,13 @@
+# Redirect social media crawlers to the static HTML version
+/   /social-preview.html   200!   User-Agent=facebookexternalhit
+/   /social-preview.html   200!   User-Agent=Facebot
+/   /social-preview.html   200!   User-Agent=Twitterbot
+/   /social-preview.html   200!   User-Agent=LinkedInBot
+/   /social-preview.html   200!   User-Agent=WhatsApp
+/   /social-preview.html   200!   User-Agent=Slackbot
+/   /social-preview.html   200!   User-Agent=TelegramBot
+/   /social-preview.html   200!   User-Agent=Pinterest
+/   /social-preview.html   200!   User-Agent=Discordbot
+
+# Handle all other routes with the SPA
+/*   /index.html   200
