@@ -17,7 +17,7 @@ A modern web application to easily generate WhatsApp direct chat links, with sup
 
 ## Demo
 
-[Live Demo](#) <!-- Add your live site URL here -->
+[Live Demo](https://sayhilink.netlify.app/)
 
 ## Getting Started
 
@@ -30,7 +30,7 @@ A modern web application to easily generate WhatsApp direct chat links, with sup
 1. **Clone the repository:**
    ```powershell
    git clone <your-repo-url>
-   cd "d:\Website\My Tools\WhatsApp Link Generator\project"
+   cd whatsapp-link-generator
    ```
 2. **Install dependencies:**
    ```powershell
@@ -101,11 +101,15 @@ This project is ready for deployment on [Netlify](https://www.netlify.com/), [Ve
 
 ## Contributing
 
-Contributions are welcome! Please open issues or submit pull requests for improvements and bug fixes.
+Contributions are welcome! Please follow these guidelines:
+
+- **Frontend Only**: This project is free, without authentication, and does not log or track any data. Therefore, no backend code will be accepted.
+- Fork the repository and create a new branch for your feature or bug fix.
+- Submit a pull request with a clear description of your changes.
 
 ## License
 
-[MIT](LICENSE)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Credits
 
