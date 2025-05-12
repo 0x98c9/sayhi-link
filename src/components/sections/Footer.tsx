@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Instagram } from 'lucide-react';
+import { Github, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -33,18 +33,18 @@ const Footer: React.FC = () => {
             <ul className="mt-4 space-y-4">
               <li>
                 <a
-                  href="https://instagram.com/x6sony"
+                  href="https://x.com/0x98c9"
                   className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white inline-flex items-center"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Instagram className="h-5 w-5 mr-2" />
-                  Instagram
+                  <Twitter className="h-5 w-5 mr-2" />
+                  Twitter
                 </a>
               </li>
               <li>
                 <a
-                  href="https://github.com/0x98c9"
+                  href="https://github.com/0x98c9/sayhi-link"
                   className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white inline-flex items-center"
                   target="_blank"
                   rel="noopener noreferrer"
