@@ -2,7 +2,7 @@
 
 A modern web application to easily generate WhatsApp direct chat links, with support for custom messages, country code selection, emoji input, and instant QR code generation. Built with React, TypeScript, Vite, and Tailwind CSS.
 
-![SayHi Link Logo](./src/assets/images/og-image.png?raw=true "WhatsApp Link Generator")
+![SayHi Link Website Screenshot](./src/assets/images/og-image.jpg)
 
 ## Features
 
