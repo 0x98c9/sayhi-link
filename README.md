@@ -29,7 +29,7 @@ A modern web application to easily generate WhatsApp direct chat links, with sup
 
 1. **Clone the repository:**
    ```powershell
-   git clone <your-repo-url>
+   git clone https://github.com/0x98c9/sayhi-link.git
    cd whatsapp-link-generator
    ```
 2. **Install dependencies:**
