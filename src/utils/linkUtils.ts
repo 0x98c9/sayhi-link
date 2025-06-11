@@ -81,3 +81,26 @@ export const defaultTemplates = [
     content: 'Friendly Reminder! ⏰\n\nYour appointment is scheduled for:\n📅 [Date]\n⏰ [Time]\n\nPlease arrive 5 minutes early. If you need to reschedule, let us know 24 hours in advance.\n\nSee you soon! 👋'
   }
 ];
+
+export const shortenUrl = async (longUrl: string): Promise<string> => {
+  const encodedUrl = encodeURIComponent(longUrl);
+  const apiUrl = `https://is.gd/create.php?format=simple&url=${encodedUrl}`;
+
+  try {
+    const response = await fetch(apiUrl);
+    if (response.ok) {
+      const text = await response.text();
+      if (text.startsWith("Error:")) {
+        throw new Error(text);
+      }
+      return text;
+    } else {
+      throw new Error("Failed to shorten URL.");
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to shorten URL: ${error.message}`);
+    }
+    throw new Error("Failed to shorten URL due to an unknown error.");
+  }
+};

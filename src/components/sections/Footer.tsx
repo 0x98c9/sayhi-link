@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter } from 'lucide-react';
+import { Github, Twitter, MessageSquarePlus } from 'lucide-react'; // Added MessageSquarePlus
 
 const Footer: React.FC = () => {
   return (
@@ -51,6 +51,17 @@ const Footer: React.FC = () => {
                 >
                   <Github className="h-5 w-5 mr-2" />
                   GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/0x98c9/sayhi-link/issues"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white inline-flex items-center"
+                >
+                  <MessageSquarePlus size={20} className="mr-2" /> {/* Adjusted icon size and margin */}
+                  Suggest a Feature
                 </a>
               </li>
             </ul>

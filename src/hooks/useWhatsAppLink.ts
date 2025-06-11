@@ -49,6 +49,9 @@ export const useWhatsAppLink = ({
   // Get message character count
   const messageCharacterCount = message.length;
 
+  // Calculate word count
+  const messageWordCount = message.trim() === '' ? 0 : message.trim().split(/\s+/).length;
+
   return {
     countryCode,
     phoneNumber,
@@ -56,6 +59,7 @@ export const useWhatsAppLink = ({
     link,
     isValidPhone,
     messageCharacterCount,
+    messageWordCount, // Added
     handleCountryCodeChange,
     handlePhoneNumberChange,
     handleMessageChange,

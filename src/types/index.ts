@@ -17,3 +17,13 @@ export interface Template {
 }
 
 export type ThemeMode = 'light' | 'dark';
+
+export interface LinkHistoryItem {
+  id: string;
+  phoneNumber: string;
+  countryCode: string;
+  message: string;
+  originalLink: string;
+  shortenedLink?: string;
+  createdAt: number;
+}
