@@ -10,6 +10,10 @@ A modern web application to easily generate WhatsApp direct chat links, with sup
 - **Custom Message**: Add a pre-filled message to your WhatsApp link.
 - **Emoji Picker**: Insert emojis into your message with ease.
 - **QR Code Generation**: Instantly generate a QR code for your WhatsApp link.
+- **Customizable QR Codes**: Adjust the size, foreground, and background colors of your generated QR codes.
+- **Link Shortening**: Optionally shorten your generated WhatsApp links using a third-party service (is.gd) for easier sharing.
+- **Enhanced Message Input**: Message field now displays word count and supports inserting predefined text placeholders (e.g., [Date], [Your Name]) to help craft messages.
+- **Link History**: Save your frequently used links (phone number, message, and generated links) to local browser storage for quick access and reuse.
 - **Copy & Share**: Copy the generated link or QR code for easy sharing.
 - **Templates**: Use message templates for quick link creation.
 - **Dark/Light Theme**: Toggle between light and dark modes.

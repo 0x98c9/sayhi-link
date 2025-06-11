@@ -1,9 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react'; // Added useState
 import { useWhatsAppLink } from '../hooks/useWhatsAppLink';
+import { useLinkHistory } from '../hooks/useLinkHistory'; // Added
+import { LinkHistoryItem } from '../types'; // Added
 import MainLayout from '../layouts/MainLayout';
 import PhoneInput from '../components/PhoneInput';
 import MessageInput from '../components/MessageInput';
 import OutputDisplay from '../components/OutputDisplay';
+import LinkHistory from '../components/LinkHistory'; // Added
 import Hero from '../components/sections/Hero';
 import Features from '../components/sections/Features';
 import UseCases from '../components/sections/UseCases';
@@ -12,6 +15,9 @@ import Footer from '../components/sections/Footer';
 
 const HomePage: React.FC = () => {
   const toolRef = useRef<HTMLDivElement>(null);
+  const toolRef = useRef<HTMLDivElement>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null); // For copy feedback
+
   const {
     countryCode,
     phoneNumber,
@@ -19,14 +25,51 @@ const HomePage: React.FC = () => {
     link,
     isValidPhone,
     messageCharacterCount,
+    messageWordCount, // Added
     handleCountryCodeChange,
     handlePhoneNumberChange,
     handleMessageChange,
   } = useWhatsAppLink();
 
+  const {
+    history,
+    addHistoryItem,
+    removeHistoryItem,
+    clearHistory,
+  } = useLinkHistory();
+
   const scrollToTool = () => {
     toolRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const handleRepopulate = (item: LinkHistoryItem) => {
+    handleCountryCodeChange(item.countryCode);
+    handlePhoneNumberChange(item.phoneNumber);
+    handleMessageChange(item.message);
+    setToastMessage("Form repopulated from history!");
+    setTimeout(() => setToastMessage(null), 3000);
+    // Scroll to tool to see the repopulated form
+    toolRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handleSaveToHistory = (
+    data: Omit<LinkHistoryItem, 'id' | 'createdAt' | 'shortenedLink'> & {shortenedLink?: string}
+  ) => {
+    addHistoryItem(data);
+    setToastMessage("Link saved to history!");
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const handleCopyHistoryLink = async (linkToCopy: string, type: 'original' | 'shortened') => {
+    try {
+      await navigator.clipboard.writeText(linkToCopy);
+      setToastMessage(`${type === 'original' ? 'Original' : 'Shortened'} link copied to clipboard!`);
+    } catch (err) {
+      setToastMessage(`Failed to copy ${type} link.`);
+    }
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
 
   return (
     <MainLayout>
@@ -55,6 +98,7 @@ const HomePage: React.FC = () => {
                   message={message}
                   onMessageChange={handleMessageChange}
                   characterCount={messageCharacterCount}
+                  wordCount={messageWordCount} // Added
                 />
               </form>
             </div>
@@ -63,9 +107,26 @@ const HomePage: React.FC = () => {
               link={link} 
               message={message} 
               isValidLink={isValidPhone && link !== ''}
+              countryCode={countryCode} // Pass countryCode
+              phoneNumber={phoneNumber} // Pass phoneNumber
+              onSaveToHistory={handleSaveToHistory} // Pass handler
+            />
+
+            <LinkHistory
+              history={history}
+              onRepopulate={handleRepopulate}
+              onDelete={removeHistoryItem}
+              onClearAll={clearHistory}
+              onCopyLink={handleCopyHistoryLink}
             />
           </div>
         </div>
+
+        {toastMessage && (
+          <div className="fixed bottom-4 right-4 bg-gray-800 text-white p-3 rounded-md shadow-lg transition-opacity duration-300">
+            {toastMessage}
+          </div>
+        )}
 
         <Features />
         <UseCases />

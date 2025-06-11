@@ -4,9 +4,16 @@ import QRCode from 'qrcode';
 interface QRCodeGeneratorProps {
   value: string;
   size?: number;
+  fgColor?: string; // Added
+  bgColor?: string; // Added
 }
 
-const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ value, size = 128 }) => {
+const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({
+  value,
+  size = 128,
+  fgColor = '#000000', // Added default
+  bgColor = '#ffffff'  // Added default
+}) => {
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -27,8 +34,8 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ value, size = 128 }) 
           width: size,
           margin: 1,
           color: {
-            dark: '#000000',
-            light: '#ffffff',
+            dark: fgColor,  // Use prop
+            light: bgColor, // Use prop
           },
         });
         setQrCodeDataUrl(dataUrl);
@@ -41,7 +48,7 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ value, size = 128 }) 
     };
 
     generateQRCode();
-  }, [value, size]);
+  }, [value, size, fgColor, bgColor]); // Added fgColor, bgColor to dependencies
 
   const handleDownload = () => {
     if (!qrCodeDataUrl) return;
