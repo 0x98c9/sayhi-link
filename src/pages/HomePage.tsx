@@ -15,7 +15,6 @@ import Footer from '../components/sections/Footer';
 
 const HomePage: React.FC = () => {
   const toolRef = useRef<HTMLDivElement>(null);
-  const toolRef = useRef<HTMLDivElement>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null); // For copy feedback
 
   const {
